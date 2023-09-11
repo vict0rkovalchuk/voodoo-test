@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        font-family: 'Space Grotesk', sans-serif;
+      }
+
+      input:checked + .tab-label::after {
+        transform: rotate(-90deg);
+      }
+      input:checked ~ .tab-content {
+        max-height: 100vh;
+        padding: 1em;
+      }
+    </style>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      function openCart() {
+        document.getElementById('sideCart').style.right = '0';
+      }
+
+      function closeCart() {
+        document.getElementById('sideCart').style.right = '-100%';
+      }
+    </script>
+  </head>
+  <body class="bg-[#FCF7E6]">
+    <div
+      id="sideCart"
+      class="sidenav h-full fixed z-20 top-0 right-[-100%] bg-[#111] overflow-x-hidden duration-[0.7s] text-[#FCF7E6] px-10 pt-12 w-full sm:w-[445px] md:w-6/12 lg:w-[445px]"
+    >
+      <div
+        class="sidenav__header pb-[22px] flex justify-between items-center border-b-[1px] border-solid border-[#FCF7E6]"
+      >
+        <div class="sidenav__header-title text-2xl font-bold">
+          Shopping Cart
+        </div>
+        <div class="sidenav__header-close text-3xl">
+          <a
+            href="javascript:void(0)"
+            class="closebtn text-[#FCF7E6]"
+            onclick="closeCart()"
+            >&times;</a
+          >
+        </div>
+      </div>
+      <div class="sidenav__items pt-[53px] pb-8 flex flex-col gap-10"></div>
+      <div
+        class="sidenav__footer pt-[35px] pb-[35px] flex justify-between items-center border-t-[1px] border-solid border-[#FCF7E6]"
+      >
+        <div class="sidenav__footer-total text-sm font-bold uppercase">
+          total
+        </div>
+        <div
+          class="sidenav__footer-price text-right text-sm font-bold uppercase"
+        ></div>
+      </div>
+    </div>
+
+    <header
+      class="border-b-[1px] border-solid border-black p-6 md:py-12 md:pl-16 md:pr-28"
+    >
+      <div class="container mx-auto flex justify-between">
+        <div class="logo flex gap-1 md:gap-3">
+          <div class="logo__round w-[23px] md:w-auto">
+            <a href="#">
+              <img class="w-[100%]" src="./icons/voodoo-icon.svg" alt="voodoo"
+            /></a>
+          </div>
+          <div class="logo__text h-[50px] md:h-auto">
+            <a href="#"
+              ><img class="h-[100%]" src="./icons/voodoo-logo.svg" alt="voodoo"
+            /></a>
+          </div>
+        </div>
+        <div class="signup">
+          <div class="signup__wrapper flex items-center gap-4 md:gap-12">
+            <div class="signup__cart cursor-pointer">
+              <img onclick="openCart()" src="./icons/cart.svg" alt="cart" />
+            </div>
+            <div class="signup__btn">
+              <button
+                class="p-3 bg-black text-white rounded text-sm md:text-xl leading-[14px] md:leading-[20px]"
+              >
+                Sign-up
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="px-6 xl:px-28 mt-6 md:mt-[100px] mb-[59px] xl:mb-48">
+      <div class="container mx-auto">
+        <div class="accordeon row">
+          <div class="col">
+            <div class="tabs overflow-hidden rounded">
+              <div class="tab">
+                <input
+                  class="absolute opacity-0 z-0"
+                  type="checkbox"
+                  id="chck1"
+                />
+                <label
+                  class="tab-label bg-black p-6 flex justify-between cursor-pointer hover:bg-[#1a252f] after:content-['\276F'] after:w-6 after:h-6 after:text-[#fcf7e6] after:text-center after:rotate-90 after:transition-all after:duration-[0.35s]"
+                  for="chck1"
+                >
+                  <div
+                    class="accordeon__text flex gap-4 sm:gap-12 items-center"
+                  >
+                    <div class="accordeon__alert flex gap-1.5">
+                      <div class="accordeon__alert-icon">
+                        <img src="./icons/alert-circle.svg" alt="alert" />
+                      </div>
+                      <div
+                        class="accordeon__alert-text uppercase text-[#FCF7E6] text-base font-bold"
+                      >
+                        ALpHA
+                      </div>
+                    </div>
+                    <div
+                      class="accordeon__descr text-[#FCF7E6] text-sm font-medium"
+                    >
+                      <span class="hidden sm:block"
+                        >Important info regarding our service</span
+                      >
+                      <span class="sm:hidden">Important info</span>
+                    </div>
+                  </div>
+                </label>
+                <div
+                  class="tab-content bg-black text-[#FCF7E6] transition-all duration-[0.35s] max-h-0 py-0 px-[1em]"
+                >
+                  Content
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="cards mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12"
+        ></div>
+        <div class="pagination mt-20">
+          <ul class="page flex justify-center items-center gap-2.5"></ul>
+        </div>
+      </div>
+    </main>
+    <footer
+      class="border-t-[1px] border-solid border-black py-12 md:py-20 px-12 md:px-28 bg-white"
+    >
+      <div class="container mx-auto">
+        <div
+          class="footer grid grid-cols-1 md:grid-cols-4 items-center gap-12 md:gap-6 text-black text-sm font-bold leading-normal uppercase"
+        >
+          <div class="footer__icon flex justify-center order-4 md:order-none">
+            <a href="#">
+              <img
+                class="w-[82px] h-[82px]"
+                src="./icons/voodoo-icon.svg"
+                alt="icon"
+            /></a>
+          </div>
+          <div class="footer__menu flex flex-col gap-1.5">
+            <a href="#">FAQ</a>
+            <a href="#">Contact</a>
+            <a href="#">Returns</a>
+          </div>
+          <div class="footer__policy flex flex-col gap-1.5">
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Cookie Policy</a>
+            <a href="#">Cookie Settings</a>
+          </div>
+          <div class="footer__social flex flex-col gap-1.5">
+            <a href="#">About second chance</a>
+            <a href="#">Career</a>
+            <a href="#">facebook</a>
+            <a href="#">instagram</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="./pagination.js"></script>
+    <script src="./script.js"></script>
+    <script src="./cart.js"></script>
+    <script src="./black-disclosure.js"></script>
+  </body>
+</html>
